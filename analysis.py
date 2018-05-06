@@ -7,7 +7,7 @@ import pandas as pd
 
 #importing data set
 
-dataset = pd.read_csv("data.csv")
+dataset = pd.read_csv("data/data.csv")
 x = dataset.iloc[:, 2:-2].values 
 y = dataset.iloc[:, -1:].values
 
@@ -30,7 +30,7 @@ regressor.fit(x_train,y_train)
 y_pred = regressor.predict(x_test)
 
 
-#backward elimination for those attributes that doesn't have musch effect
+#backward elimination for those attributes that doesn't have much effect
 
 import statsmodels.formula.api as sm
 x = np.append(arr = np.ones((209,1)).astype(int), values = x, axis = 1)
@@ -53,3 +53,24 @@ from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 regressor.fit(x_train_n,y_train_n)
 y_pred_n = regressor.predict(x_test_n)
+
+
+#analysing graphs
+
+#analyszing first parameter
+
+plt.scatter(x_test[:,0], y_test[:,0], color = 'yellow')
+plt.scatter(x_test[:,0], y_pred_n[:,0], color = 'green')
+plt.title('CPU Relative Performance')
+plt.xlabel('MYCT')
+plt.ylabel('ERP')
+plt.savefig("test_2.png")
+plt.show()
+
+
+
+
+
+
+
+
